@@ -6,8 +6,8 @@ module.exports = {
 			'ReviewTypes',
 			[
 				{ type: 'Video', createdAt: new Date(), updatedAt: new Date() },
-				{ type: 'Text', createdAt: new Date(), updatedAt: new Date() },
-				{ type: 'Mixed', createdAt: new Date(), updatedAt: new Date() }
+				{ type: 'Mixed', createdAt: new Date(), updatedAt: new Date() },
+				{ type: 'Text', createdAt: new Date(), updatedAt: new Date() }
 			],
 			{}
 		);

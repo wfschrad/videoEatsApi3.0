@@ -191,7 +191,11 @@ router.get(
 					attributes: ['id', 'userName', 'firstName', 'lastName']
 				}
 			],
-			order: [['createdAt', 'DESC']]
+			order: [
+				['typeId', 'ASC'],
+				['upVoteCount', 'DESC'],
+				['createdAt', 'DESC']
+			]
 		});
 		res.json({ reviews });
 	})
