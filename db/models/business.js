@@ -5,6 +5,8 @@ module.exports = (sequelize, DataTypes) => {
 		{
 			name: { type: DataTypes.STRING(100), allowNull: false },
 			address: { type: DataTypes.STRING(150), allowNull: false },
+			lat: { type: DataTypes.STRING(11), allowNull: false },
+			lon: { type: DataTypes.STRING(11), allowNull: false },
 			phoneNum: DataTypes.STRING(15),
 			hours: DataTypes.STRING(100),
 			description: DataTypes.TEXT,
@@ -13,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		{}
 	);
-	Business.associate = function(models) {
+	Business.associate = function (models) {
 		Business.belongsTo(models.User, { foreignKey: 'ownerId' });
 		Business.hasMany(models.Review, { foreignKey: 'businessId' });
 		Business.belongsTo(models.Tag, { foreignKey: 'categoryId' });
