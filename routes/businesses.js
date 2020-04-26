@@ -45,10 +45,16 @@ router.post(
 			businesses = await Business.findAll({
 				where: { name: { [Op.iLike]: `%${name.toLowerCase()}%` } },
 				attributes: ['id', 'name', 'address', 'phoneNum', 'lat', 'lon'],
-				include: {
-					model: Review,
-					attributes: ['businessRating']
-				}
+				include: [
+					{
+						model: Review,
+						attributes: ['businessRating']
+					},
+					{
+						model: Tag,
+						attributes: ['type']
+					}
+				]
 			});
 			//one tag (category) per business model
 		} else if (tagBasic) {
