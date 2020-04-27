@@ -33,6 +33,9 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
+      photoContent: {
+        type: Sequelize.TEXT
+      },
       ownerId: {
         type: Sequelize.INTEGER,
         references: {
