@@ -4,7 +4,15 @@ module.exports = (sequelize, DataTypes) => {
     typeId: { type: DataTypes.INTEGER, allowNull: false },
     userId: { type: DataTypes.INTEGER, allowNull: false },
     reviewId: { type: DataTypes.INTEGER, allowNull: false }
-  }, {});
+  },
+    {
+      indexes: [
+        {
+          unique: true,
+          fields: ['typeId', 'userId', 'reviewId']
+        }
+      ]
+    }, {});
   VoteInstance.associate = function (models) {
     // VoteInstance.belongsToMany(models.VoteType, { foreignKey: 'typeId' });
     // VoteInstance.belongsToMany(models.User, { foreignKey: 'userId' });
