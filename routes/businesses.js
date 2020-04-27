@@ -106,7 +106,8 @@ router.get(
 				address: business.address,
 				phoneNum: business.phoneNum,
 				hours: business.hours,
-				description: business.description
+				description: business.description,
+				photoContent: business.photoContent
 			}
 		});
 	})
@@ -127,7 +128,8 @@ router.put(
 					address: business.address,
 					phoneNum: business.phoneNum,
 					hours: business.hours,
-					description: business.description
+					description: business.description,
+					photoContent: business.photoContent
 				}
 			});
 		} else {
