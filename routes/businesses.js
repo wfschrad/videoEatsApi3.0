@@ -269,8 +269,8 @@ router.delete(
 router.get(
 	'/tags',
 	asyncHandler(async (req, res) => {
-		const tags = await Tag.findAll({ attributes: ['id', 'type'] });
-		res.json({ tags });
+		const categories = await Tag.findAll({ order: ['type'] });
+		res.json({ categories });
 	})
 );
 
