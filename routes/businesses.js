@@ -44,15 +44,15 @@ router.post(
 		if (name) {
 			businesses = await Business.findAll({
 				where: { name: { [Op.iLike]: `%${name.toLowerCase()}%` } },
-				attributes: ['id', 'name', 'address', 'phoneNum', 'lat', 'lon'],
+				attributes: [ 'id', 'name', 'address', 'phoneNum', 'lat', 'lon' ],
 				include: [
 					{
 						model: Review,
-						attributes: ['businessRating']
+						attributes: [ 'businessRating' ]
 					},
 					{
 						model: Tag,
-						attributes: ['type']
+						attributes: [ 'type' ]
 					}
 				]
 			});
@@ -62,12 +62,12 @@ router.post(
 				include: [
 					{
 						model: Tag,
-						attributes: ['id', 'type'],
+						attributes: [ 'id', 'type' ],
 						where: { type: tagBasic }
 					},
 					{
 						model: Review,
-						attributes: ['businessRating']
+						attributes: [ 'businessRating' ]
 					}
 				]
 			});
@@ -88,7 +88,7 @@ router.get(
 	'/',
 	asyncHandler(async (req, res) => {
 		const businesses = await Business.findAll({
-			attributes: ['id', 'name', 'address', 'phoneNum', 'hours'] //verify this list of attributes
+			attributes: [ 'id', 'name', 'address', 'phoneNum', 'hours' ] //verify this list of attributes
 		});
 		res.json({ businesses });
 	})
@@ -145,7 +145,7 @@ router.delete(
 	//requireAuth, removed for postman testing. Add specific auth for admin functions?
 	asyncHandler(async (req, res) => {
 		const business = await Business.findByPk(req.params.id, {
-			attributes: ['id']
+			attributes: [ 'id' ]
 		});
 		await business.destroy();
 		res.end();
@@ -188,14 +188,10 @@ router.get(
 			include: [
 				{
 					model: User,
-					attributes: ['id', 'userName', 'firstName', 'lastName']
+					attributes: [ 'id', 'userName', 'firstName', 'lastName' ]
 				}
 			],
-			order: [
-				['typeId', 'ASC'],
-				['upVoteCount', 'DESC'],
-				['createdAt', 'DESC']
-			]
+			order: [ [ 'typeId', 'ASC' ], [ 'upVoteCount', 'DESC' ], [ 'createdAt', 'DESC' ] ]
 		});
 		res.json({ reviews });
 	})
@@ -210,11 +206,11 @@ router.get(
 			include: [
 				{
 					model: User,
-					attributes: ['id', 'userName']
+					attributes: [ 'id', 'userName' ]
 				},
 				{
 					model: TagInstance,
-					attributes: ['typeId'] //include Tag model to get type name?
+					attributes: [ 'typeId' ] //include Tag model to get type name?
 				}
 			]
 		});
@@ -255,7 +251,7 @@ router.delete(
 	requireAuth,
 	asyncHandler(async (req, res) => {
 		const review = await Review.findByPk(req.params.id, {
-			attributes: ['id']
+			attributes: [ 'id' ]
 		});
 		await review.destroy();
 		res.end();
@@ -269,7 +265,7 @@ router.delete(
 router.get(
 	'/tags',
 	asyncHandler(async (req, res) => {
-		const categories = await Tag.findAll({ order: ['type'] });
+		const categories = await Tag.findAll({ order: [ 'type' ] });
 		res.json({ categories });
 	})
 );
@@ -281,7 +277,7 @@ router.get(
 	asyncHandler(async (req, res) => {
 		const tags = await TagInstance.findAll({
 			where: { businessId: req.params.id },
-			attributes: ['tagId', [sequelize.literal('(SELECT COUNT (*))')]]
+			attributes: [ 'tagId', [ sequelize.literal('(SELECT COUNT (*))') ] ]
 		});
 		res.json({ tags });
 	})
@@ -300,7 +296,7 @@ router.post(
 		//assume req.body has "tag" key with text-value of target tag
 		const { tag, userId } = req.body;
 		//check database for tag, make it if it's new
-		const [tagType, _created] = await Tag.findOrCreate({
+		const [ tagType, _created ] = await Tag.findOrCreate({
 			where: { type: tag }
 		});
 
@@ -444,7 +440,7 @@ router.post(
 			});
 		}
 		const voteCounts = await Review.findByPk(req.params.id, {
-			attributes: ['upVoteCount', 'downVoteCount']
+			attributes: [ 'upVoteCount', 'downVoteCount' ]
 		});
 		res.json({ vote, voteCounts });
 	})

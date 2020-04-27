@@ -49,7 +49,7 @@ module.exports = {
 					downVoteCount: '1',
 					businessRating: 5,
 					reviewText: '',
-					videoLink: 'https://youtu.be/U3ia6m3jyLM?t=31',
+					videoLink: 'https://www.youtube.com/embed/U3ia6m3jyLM',
 					createdAt: new Date(),
 					updatedAt: new Date()
 				},
@@ -157,7 +157,7 @@ module.exports = {
 					downVoteCount: '1',
 					businessRating: 5,
 					reviewText: '',
-					videoLink: 'https://youtu.be/d2OiEnOEBTM?t=177',
+					videoLink: 'https://www.youtube.com/embed/d2OiEnOEBTM',
 					createdAt: new Date(),
 					updatedAt: new Date()
 				},
@@ -349,7 +349,7 @@ module.exports = {
 					downVoteCount: '2',
 					businessRating: 3,
 					reviewText: '',
-					videoLink: 'https://youtu.be/7ZSih-RUlSY?t=136',
+					videoLink: 'https://www.youtube.com/embed/7ZSih-RUlSY',
 					createdAt: new Date(),
 					updatedAt: new Date()
 				},
@@ -373,7 +373,7 @@ module.exports = {
 					downVoteCount: '4',
 					businessRating: 5,
 					reviewText: '',
-					videoLink: 'https://youtu.be/hBHSId3Buts?t=26',
+					videoLink: 'https://www.youtube.com/embed/hBHSId3Buts',
 					createdAt: new Date(),
 					updatedAt: new Date()
 				},
