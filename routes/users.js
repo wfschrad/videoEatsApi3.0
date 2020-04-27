@@ -46,21 +46,13 @@ router.post('/', validateUsername, validateEmailAndPassword, handleValidationErr
 router.get('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     const user = await User.findByPk(req.params.id, {
         include: [{ model: StatusType, attributes: ['type'] }],
-        attributes: ['userName', 'firstName', 'revScore']
+        attributes: ['id', 'userName', 'firstName', 'revScore']
     });
-    res.json({
-        user: {
-            id: user.id,
-            userName: user.userName,
-            firstName: user.firstName,
-            revScore: user.revScore,
-            statusType: user.StatusType.type
-        }
-    });
+    res.json({ user });
 }))
 
 //update specific user
-router.put('/:id(\\d+)', validateUsername, validateEmailAndPassword, asyncHandler(async (req, res, next) => {
+router.put('/:id(\\d+)', requireAuth, validateUsername, validateEmailAndPassword, asyncHandler(async (req, res, next) => {
     const user = await User.findByPk(req.params.id, {
         include: [{ model: StatusType, attributes: ['type'] }],
     });
@@ -84,7 +76,7 @@ router.put('/:id(\\d+)', validateUsername, validateEmailAndPassword, asyncHandle
 }));
 
 //delete specific user
-router.delete('/:id(\\d+)', validateUsername, validateEmailAndPassword, asyncHandler(async (req, res, next) => {
+router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
     const user = await User.findByPk(req.params.id, {
         attributes: ['id']
     });
@@ -93,7 +85,7 @@ router.delete('/:id(\\d+)', validateUsername, validateEmailAndPassword, asyncHan
 }));
 
 //authenticate
-router.post('/token', validateEmailAndPassword, asyncHandler(async (req, res, next) => {
+router.post('/token', asyncHandler(async (req, res, next) => {
     const { email, password } = req.body;
     const user = await User.findOne({
         where: {
@@ -115,14 +107,12 @@ router.post('/token', validateEmailAndPassword, asyncHandler(async (req, res, ne
 
 //get all reviews for specific user
 //functioning 4.21.20
-router.get('/:id(\\d+)/reviews',
-    //requireAuth, 
-    asyncHandler(async (req, res) => {
-        const reviews = await Review.findAll({
-            where: { userId: req.params.id },
-            order: [['createdAt', 'DESC']]
-        });
-        res.json({ reviews });
-    }))
+router.get('/:id(\\d+)/reviews', asyncHandler(async (req, res) => {
+    const reviews = await Review.findAll({
+        where: { userId: req.params.id },
+        order: [['createdAt', 'DESC']]
+    });
+    res.json({ reviews });
+}))
 
 module.exports = router;
