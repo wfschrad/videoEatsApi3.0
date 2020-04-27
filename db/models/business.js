@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
 			name: { type: DataTypes.STRING(100), allowNull: false },
 			address: { type: DataTypes.STRING(150), allowNull: false },
 			lat: { type: DataTypes.STRING(11), allowNull: false },
-			lon: { type: DataTypes.STRING(11), allowNull: false },
+			lng: { type: DataTypes.STRING(11), allowNull: false },
 			phoneNum: DataTypes.STRING(15),
 			hours: DataTypes.STRING(100),
 			description: DataTypes.TEXT,

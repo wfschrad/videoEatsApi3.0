@@ -20,7 +20,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING(11)
       },
-      lon: {
+      lng: {
         allowNull: false,
         type: Sequelize.STRING(11)
       },
