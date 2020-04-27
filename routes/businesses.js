@@ -422,7 +422,10 @@ router.post(
 			userId: user.id,
 			reviewId: req.params.id
 		});
-		res.json({ newVote });
+		const voteCounts = await Review.findByPk(req.params.id, {
+			attributes: ['upVoteCount', 'downVoteCount']
+		});
+		res.json({ newVote, voteCounts });
 	})
 );
 
