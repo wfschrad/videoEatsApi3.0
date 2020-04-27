@@ -9,7 +9,7 @@
   "scripts": {
     "start": "per-env",
     "start:development": "nodemon -r dotenv/config ./bin/www",
-    "start:production": "./bin/www"
+    "start:production": "node ./bin/www"
   },
   "repository": {
     "type": "git",
