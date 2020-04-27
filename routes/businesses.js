@@ -416,16 +416,37 @@ router.post(
 	'/reviews/:id(\\d+)/votes',
 	//requireAuth - removed for testing with postman
 	asyncHandler(async (req, res) => {
-		const { user, vote } = req.body;
-		const newVote = await VoteInstance.create({
-			typeId: vote.typeId,
-			userId: user.id,
-			reviewId: req.params.id
+		let { user, vote } = req.body;
+
+		//add put logic to simplify front-end complexity
+		const voteInstance = await VoteInstance.findOne({
+			where: {
+				reviewId: req.params.id,
+				userId: user.id
+				//$and: [{ businessId }, { userId }],
+				// $and: { userId }
+			}
 		});
+		//let vote;
+		if (voteInstance) {
+			vote = await voteInstance.update({ typeId: vote.typeId });
+			//voteInstance.voteId = 2;
+			//const saveRes = await voteInstance.save();
+			// res.json({
+			// 	update: true,
+			// 	newType: result.typeId
+			// });
+		} else {
+			vote = await VoteInstance.create({
+				typeId: vote.typeId,
+				userId: user.id,
+				reviewId: req.params.id
+			});
+		}
 		const voteCounts = await Review.findByPk(req.params.id, {
 			attributes: ['upVoteCount', 'downVoteCount']
 		});
-		res.json({ newVote, voteCounts });
+		res.json({ vote, voteCounts });
 	})
 );
 
