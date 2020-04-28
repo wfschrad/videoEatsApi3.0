@@ -195,6 +195,7 @@ router.get(
 			],
 			order: [['typeId', 'ASC'], ['upVoteCount', 'DESC'], ['createdAt', 'DESC']]
 		});
+
 		res.json({ reviews });
 	})
 );
@@ -414,6 +415,12 @@ router.post(
 	requireAuth,
 	asyncHandler(async (req, res) => {
 		const { typeId } = req.body.vote;
+		const review = await Review.findByPk(req.params.id);
+		let upVoteCount = review.upVoteCount;
+		let downVoteCount = review.downVoteCount;
+		let swap;
+
+
 
 		//add put logic to simplify front-end complexity
 		const voteInstance = await VoteInstance.findOne({
@@ -427,7 +434,27 @@ router.post(
 
 		//let vote;
 		if (voteInstance) {
+			console.log('swap', swap);
+			console.log('typeId', typeId);
+			console.log('voteInstance.typeId', voteInstance.typeId);
+
+			if (typeId !== voteInstance.typeId) swap = true;
+			console.log('swap after', swap)
+
 			vote = await voteInstance.update({ typeId });
+
+
+			if (swap && typeId === 1) {
+				console.log('SWAPPIN')
+				upVoteCount++;
+				downVoteCount--;
+			}
+			else if (swap && typeId === 2) {
+				upVoteCount--;
+				downVoteCount++;
+				console.log('SWAPPIN-2')
+			}
+
 			//voteInstance.voteId = 2;
 			//const saveRes = await voteInstance.save();
 			// res.json({
@@ -440,11 +467,14 @@ router.post(
 				userId: req.user.id,
 				reviewId: req.params.id
 			});
+			if (typeId === 1) upVoteCount++;
+			else downVoteCount--;
 		}
-		const voteCounts = await Review.findByPk(req.params.id, {
-			attributes: ['upVoteCount', 'downVoteCount']
-		});
-		res.json({ vote, voteCounts });
+		// const voteCounts = await Review.findByPk(req.params.id, {
+		// 	attributes: ['upVoteCount', 'downVoteCount']
+		// });
+		await review.update({ upVoteCount, downVoteCount });
+		res.json({ upVoteCount: review.upVoteCount, downVoteCount: review.downVoteCount });
 	})
 );
 
