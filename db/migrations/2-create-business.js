@@ -18,11 +18,11 @@ module.exports = {
       },
       lat: {
         allowNull: false,
-        type: Sequelize.STRING(11)
+        type: Sequelize.STRING(18)
       },
       lon: {
         allowNull: false,
-        type: Sequelize.STRING(11)
+        type: Sequelize.STRING(18)
       },
       phoneNum: {
         type: Sequelize.STRING(15)
