@@ -44,7 +44,7 @@ router.post(
 		if (name) {
 			businesses = await Business.findAll({
 				where: { name: { [Op.iLike]: `%${name.toLowerCase()}%` } },
-				attributes: ['id', 'name', 'address', 'phoneNum', 'lat', 'lng'],
+				attributes: ['id', 'name', 'address', 'phoneNum', 'lat', 'lon'],
 				include: [
 					{
 						model: Review,
@@ -389,8 +389,7 @@ router.delete(
 
 //deletes a tag type from Tag table (no longer searchable)
 //functioning 4.22.20
-router.delete(
-	'/tags/:id(\\d+)',
+router.delete('/tags/:id(\\d+)', requireAuth,//admin-role
 	asyncHandler(async (req, res, next) => {
 		const tag = await Tag.findByPk(req.params.id);
 		if (tag) {
@@ -411,8 +410,7 @@ router.delete(
 //* POST /businesses/reviews/:id/votes - creates a new vote instance
 //**Functioning 4.23.20 ......TO-DO: add unique indexes to join tables */
 router.post(
-	'/reviews/:id(\\d+)/votes',
-	//requireAuth - removed for testing with postman
+	'/reviews/:id(\\d+)/votes', //requireAuth - removed for testing with postman
 	asyncHandler(async (req, res) => {
 		let { user, vote } = req.body;
 
@@ -425,6 +423,7 @@ router.post(
 				// $and: { userId }
 			}
 		});
+
 		//let vote;
 		if (voteInstance) {
 			vote = await voteInstance.update({ typeId: vote.typeId });
@@ -509,8 +508,7 @@ router.put(
 //delete voteInstance for specified review and passed-in user
 //**Functioning 4.23.20 */
 router.delete(
-	'/reviews/:id(\\d+)/votes',
-	//requireAuthh)
+	'/reviews/:id(\\d+)/votes', requireAuth,
 	asyncHandler(async (req, res, next) => {
 		const { user: { id } } = req.body;
 		const voteInstance = await VoteInstance.findOne({
