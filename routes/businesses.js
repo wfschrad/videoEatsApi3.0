@@ -410,15 +410,16 @@ router.delete('/tags/:id(\\d+)', requireAuth,//admin-role
 //* POST /businesses/reviews/:id/votes - creates a new vote instance
 //**Functioning 4.23.20 ......TO-DO: add unique indexes to join tables */
 router.post(
-	'/reviews/:id(\\d+)/votes', //requireAuth - removed for testing with postman
+	'/reviews/:id(\\d+)/votes',
+	requireAuth,
 	asyncHandler(async (req, res) => {
-		let { user, vote } = req.body;
+		const { typeId } = req.body.vote;
 
 		//add put logic to simplify front-end complexity
 		const voteInstance = await VoteInstance.findOne({
 			where: {
 				reviewId: req.params.id,
-				userId: user.id
+				userId: req.user.id
 				//$and: [{ businessId }, { userId }],
 				// $and: { userId }
 			}
@@ -426,7 +427,7 @@ router.post(
 
 		//let vote;
 		if (voteInstance) {
-			vote = await voteInstance.update({ typeId: vote.typeId });
+			vote = await voteInstance.update({ typeId });
 			//voteInstance.voteId = 2;
 			//const saveRes = await voteInstance.save();
 			// res.json({
@@ -435,8 +436,8 @@ router.post(
 			// });
 		} else {
 			vote = await VoteInstance.create({
-				typeId: vote.typeId,
-				userId: user.id,
+				typeId,
+				userId: req.user.id,
 				reviewId: req.params.id
 			});
 		}
@@ -476,8 +477,7 @@ router.get(
 //* PUT /businesses/reviews/votes/:id - updates a specific vote instance for related review
 //**Functioning 4.23.20 */
 router.put(
-	'/reviews/:id(\\d+)/votes/',
-	//requireAuth
+	'/reviews/:id(\\d+)/votes/', requireAuth,
 	asyncHandler(async (req, res, next) => {
 		const { user: { id }, vote: { typeId } } = req.body;
 		const voteInstance = await VoteInstance.findOne({

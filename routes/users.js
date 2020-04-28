@@ -2,7 +2,7 @@ const express = require('express');
 const { asyncHandler, handleValidationErrors } = require('../utils/utils');
 const { check } = require('express-validator');
 const bcrypt = require('bcryptjs');
-const { User, Review, StatusType } = require('../db/models');
+const { User, Review, StatusType, VoteInstance } = require('../db/models');
 const { getUserToken, requireAuth } = require('../utils/auth.js');
 
 //validate Password
@@ -114,5 +114,15 @@ router.get('/:id(\\d+)/reviews', asyncHandler(async (req, res) => {
     });
     res.json({ reviews });
 }))
+
+//get all votes for specified user and given review
+router.get('/:id(\\d+)/votes',
+    // requireAuth,
+    asyncHandler(async (req, res) => {
+        const userVotes = await VoteInstance.findAll({
+            where: { userId: req.params.id }
+        });
+        res.json({ userVotes });
+    }))
 
 module.exports = router;
