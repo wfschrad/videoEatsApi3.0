@@ -209,10 +209,6 @@ router.get(
 				{
 					model: User,
 					attributes: [ 'id', 'userName' ]
-				},
-				{
-					model: TagInstance,
-					attributes: [ 'typeId' ] //include Tag model to get type name?
 				}
 			]
 		});
