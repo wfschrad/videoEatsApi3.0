@@ -55,7 +55,7 @@ module.exports = {
 					categoryId: 3,
 					address: '1031 Irving St, San Francisco, CA 94122',
 					lat: 37.76371,
-					lon: 122.46899,
+					lon: -122.468994,
 					photoContent:
 						'https://s3-media0.fl.yelpcdn.com/bphoto/coGgEP6AhRPUf53MMTc5tQ/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/Ns-9v6cKI0YMGITTMeZBuQ/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/rZhBlAewon83K9yP4sRiGw/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/2kBmAaeAbGciK1_jpb4ztw/o.jpg',
 					createdAt: new Date(),
@@ -64,9 +64,9 @@ module.exports = {
 				/* 6 */ {
 					name: 'Hog Island Oyster Co',
 					categoryId: 3,
-					address: '1 Ferry Bldg, San Francisco, CA 94111',
-					lat: 38.08375,
-					lon: -122.25087,
+					address: '1 Ferry Bldg, Shop 11, San Francisco, CA 94111',
+					lat: 37.796177,
+					lon: -122.393611,
 					photoContent:
 						'https://s3-media0.fl.yelpcdn.com/bphoto/7hxlIEy0kq1k57wOJkW0Og/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/Kozd3NJMSaT6S3J2kYAc1g/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/utathIDHg791xMwYuxxtTA/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/WRwbbbP18SxEue54SmIAsw/o.jpg',
 					createdAt: new Date(),
@@ -76,8 +76,8 @@ module.exports = {
 					name: 'Gary Danko',
 					categoryId: 9,
 					address: '800 N Point St, San Francisco, CA 94109',
-					lat: 37.806141,
-					lon: -122.41708,
+					lat: 37.805978,
+					lon: -122.420592,
 					photoContent:
 						'https://s3-media0.fl.yelpcdn.com/bphoto/ioZV2k-cxUKxsT6if-JL7A/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/CAprIoeKQAYV9oUw9xBbmA/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/_dDCVo_vLpM79Y3mgyMiYg/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/pcMJNQwqz2oKcf1XC9iBcw/o.jpg',
 					createdAt: new Date(),
