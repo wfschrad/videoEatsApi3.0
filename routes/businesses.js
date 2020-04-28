@@ -468,7 +468,7 @@ router.post(
 				reviewId: req.params.id
 			});
 			if (typeId === 1) upVoteCount++;
-			else downVoteCount--;
+			else downVoteCount++;
 		}
 		// const voteCounts = await Review.findByPk(req.params.id, {
 		// 	attributes: ['upVoteCount', 'downVoteCount']
