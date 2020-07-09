@@ -44,15 +44,15 @@ router.post(
 		if (name) {
 			businesses = await Business.findAll({
 				where: { name: { [Op.iLike]: `%${name.toLowerCase()}%` } },
-				attributes: [ 'id', 'name', 'address', 'phoneNum', 'lat', 'lon' ],
+				attributes: ['id', 'name', 'address', 'phoneNum', 'lat', 'lon'],
 				include: [
 					{
 						model: Review,
-						attributes: [ 'businessRating' ]
+						attributes: ['businessRating']
 					},
 					{
 						model: Tag,
-						attributes: [ 'type' ]
+						attributes: ['type']
 					}
 				]
 			});
@@ -62,12 +62,12 @@ router.post(
 				include: [
 					{
 						model: Tag,
-						attributes: [ 'id', 'type' ],
+						attributes: ['id', 'type'],
 						where: { type: tagBasic }
 					},
 					{
 						model: Review,
-						attributes: [ 'businessRating' ]
+						attributes: ['businessRating']
 					}
 				]
 			});
@@ -88,7 +88,7 @@ router.get(
 	'/',
 	asyncHandler(async (req, res) => {
 		const businesses = await Business.findAll({
-			attributes: [ 'id', 'name', 'address', 'phoneNum', 'hours' ] //verify this list of attributes
+			attributes: ['id', 'name', 'address', 'phoneNum', 'hours'] //verify this list of attributes
 		});
 		res.json({ businesses });
 	})
@@ -147,7 +147,7 @@ router.delete(
 	//requireAuth, removed for postman testing. Add specific auth for admin functions?
 	asyncHandler(async (req, res) => {
 		const business = await Business.findByPk(req.params.id, {
-			attributes: [ 'id' ]
+			attributes: ['id']
 		});
 		await business.destroy();
 		res.end();
@@ -190,10 +190,10 @@ router.get(
 			include: [
 				{
 					model: User,
-					attributes: [ 'id', 'userName', 'firstName', 'lastName' ]
+					attributes: ['id', 'userName', 'firstName', 'lastName']
 				}
 			],
-			order: [ [ 'typeId', 'ASC' ], [ 'upVoteCount', 'DESC' ], [ 'createdAt', 'DESC' ] ]
+			order: [['typeId', 'ASC'], ['upVoteCount', 'DESC'], ['createdAt', 'DESC']]
 		});
 
 		res.json({ reviews });
@@ -209,7 +209,7 @@ router.get(
 			include: [
 				{
 					model: User,
-					attributes: [ 'id', 'userName' ]
+					attributes: ['id', 'userName']
 				}
 			]
 		});
@@ -250,7 +250,7 @@ router.delete(
 	requireAuth,
 	asyncHandler(async (req, res) => {
 		const review = await Review.findByPk(req.params.id, {
-			attributes: [ 'id' ]
+			attributes: ['id']
 		});
 		await review.destroy();
 		res.end();
@@ -264,7 +264,7 @@ router.delete(
 router.get(
 	'/tags',
 	asyncHandler(async (req, res) => {
-		const categories = await Tag.findAll({ order: [ 'type' ] });
+		const categories = await Tag.findAll({ order: ['type'] });
 		res.json({ categories });
 	})
 );
@@ -276,7 +276,7 @@ router.get(
 	asyncHandler(async (req, res) => {
 		const tags = await TagInstance.findAll({
 			where: { businessId: req.params.id },
-			attributes: [ 'tagId', [ sequelize.literal('(SELECT COUNT (*))') ] ]
+			attributes: ['tagId', [sequelize.literal('(SELECT COUNT (*))')]]
 		});
 		res.json({ tags });
 	})
@@ -295,7 +295,7 @@ router.post(
 		//assume req.body has "tag" key with text-value of target tag
 		const { tag, userId } = req.body;
 		//check database for tag, make it if it's new
-		const [ tagType, _created ] = await Tag.findOrCreate({
+		const [tagType, _created] = await Tag.findOrCreate({
 			where: { type: tag }
 		});
 
@@ -430,31 +430,19 @@ router.post(
 
 		//let vote;
 		if (voteInstance) {
-			console.log('swap', swap);
-			console.log('typeId', typeId);
-			console.log('voteInstance.typeId', voteInstance.typeId);
 
 			if (typeId !== voteInstance.typeId) swap = true;
-			console.log('swap after', swap);
 
 			vote = await voteInstance.update({ typeId });
 
 			if (swap && typeId === 1) {
-				console.log('SWAPPIN');
 				upVoteCount++;
 				downVoteCount--;
 			} else if (swap && typeId === 2) {
 				upVoteCount--;
 				downVoteCount++;
-				console.log('SWAPPIN-2');
 			}
 
-			//voteInstance.voteId = 2;
-			//const saveRes = await voteInstance.save();
-			// res.json({
-			// 	update: true,
-			// 	newType: result.typeId
-			// });
 		} else {
 			vote = await VoteInstance.create({
 				typeId,
@@ -464,9 +452,7 @@ router.post(
 			if (typeId === 1) upVoteCount++;
 			else downVoteCount++;
 		}
-		// const voteCounts = await Review.findByPk(req.params.id, {
-		// 	attributes: ['upVoteCount', 'downVoteCount']
-		// });
+
 		await review.update({ upVoteCount, downVoteCount });
 		res.json({ upVoteCount: review.upVoteCount, downVoteCount: review.downVoteCount });
 	})

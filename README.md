@@ -1,4 +1,11 @@
-# videoEatsApi
-Backend Server for VideoEats app - A video-based restaurant review application
+# videoEats API
 
-Please read the README on the frontend: [README](https://github.com/wfschrad/videoEatsClient/blob/master/README.md)
+A REST api for videoEats web-application
+For more information regarding the client app, please refer to the frontend ReadMe [here](https://github.com/wfschrad/videoEatsApi3.0)
+
+## Technologies
+
+* Nodejs / Express
+* Bcrypt / JWT
+* PostgreSQL
+* Sequelize
