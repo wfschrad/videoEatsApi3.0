@@ -5,10 +5,15 @@ module.exports = {
 		return queryInterface.bulkInsert(
 			'Businesses',
 			[
-				// hours stored in businesses??
+				// NOTE: Tags may be inaccurate compared to real life seed data
+
+				// Tags were applied retroactively for some businesses, since those
+				// businesses already had excellent video reviews but didn't fit
+				// into any particular tag
+
 				/* 1 */ {
 					name: 'Marufuku Ramen SF',
-					categoryId: 3,
+					categoryId: 2, // Ramen
 					address: '1581 Webster St, Ste 235, San Francisco, CA 94115',
 					lat: 37.78478,
 					lon: -122.43139,
@@ -19,7 +24,7 @@ module.exports = {
 				},
 				/* 2 */ {
 					name: 'Ramen Yamadaya',
-					categoryId: 2,
+					categoryId: 2, // Ramen
 					address: '1728 Buchanan St San Francisco, CA 94115',
 					lat: 37.78607,
 					lon: -122.42969,
@@ -30,7 +35,7 @@ module.exports = {
 				},
 				/* 3 */ {
 					name: 'The House',
-					categoryId: 5,
+					categoryId: 3, // American Grill
 					address: '1230 Grant Ave, San Francisco, CA 94133',
 					lat: 37.79869,
 					lon: -122.40711,
@@ -41,7 +46,7 @@ module.exports = {
 				},
 				/* 4 */ {
 					name: 'Burma Superstar',
-					categoryId: 8,
+					categoryId: 12, // Latin
 					address: '309 Clement St, San Francisco, CA 94118',
 					lat: 37.782791,
 					lon: 122.46254,
@@ -52,7 +57,7 @@ module.exports = {
 				},
 				/* 5 */ {
 					name: 'San Tung',
-					categoryId: 3,
+					categoryId: 5, // Chinese
 					address: '1031 Irving St, San Francisco, CA 94122',
 					lat: 37.76371,
 					lon: -122.468994,
@@ -63,7 +68,7 @@ module.exports = {
 				},
 				/* 6 */ {
 					name: 'Hog Island Oyster Co',
-					categoryId: 3,
+					categoryId: 16, // Seafood
 					address: '1 Ferry Bldg, Shop 11, San Francisco, CA 94111',
 					lat: 37.796177,
 					lon: -122.393611,
@@ -74,7 +79,7 @@ module.exports = {
 				},
 				/* 7 */ {
 					name: 'Gary Danko',
-					categoryId: 9,
+					categoryId: 14, // Cajun
 					address: '800 N Point St, San Francisco, CA 94109',
 					lat: 37.805978,
 					lon: -122.420592,
@@ -85,7 +90,7 @@ module.exports = {
 				},
 				/* 8 */ {
 					name: 'Sushirrito',
-					categoryId: 3,
+					categoryId: 8, // Sushi
 					address: '226 Kearny St, San Francisco, CA 94108',
 					lat: 37.79026,
 					lon: -122.40388,
@@ -96,7 +101,7 @@ module.exports = {
 				},
 				/* 9 */ {
 					name: 'The Bird',
-					categoryId: 1,
+					categoryId: 7, // Chicken Wings
 					address: '115 New Montgomery St, San Francisco, CA 94105',
 					lat: 37.7872,
 					lon: -122.4001,
@@ -107,7 +112,7 @@ module.exports = {
 				},
 				/* 10 */ {
 					name: 'Woodhouse Fish Company',
-					categoryId: 3,
+					categoryId: 10, // Wine Bar
 					address: '1914 Fillmore St, San Francisco, CA 94115',
 					lat: 37.78752,
 					lon: -122.43349,
@@ -118,7 +123,7 @@ module.exports = {
 				},
 				/* 11 */ {
 					name: 'La Mar Cebichería Peruana',
-					categoryId: 4,
+					categoryId: 12, // Latin
 					address: 'Pier 1 1/2 The Embarcadero, Ste 100, San Francisco, CA 94111',
 					lat: 37.79536,
 					lon: -122.39371,
@@ -129,7 +134,7 @@ module.exports = {
 				},
 				/* 12 */ {
 					name: "Brenda's French Soul Food",
-					categoryId: 4,
+					categoryId: 9, // French
 					address: '652 Polk St, San Francisco, CA 94102',
 					lat: 37.782909,
 					lon: -122.418869,
@@ -140,7 +145,7 @@ module.exports = {
 				},
 				/* 13 */ {
 					name: 'El Farolito',
-					categoryId: 4,
+					categoryId: 13, // Mexican
 					address: '2779 Mission St, San Francisco, CA 94110',
 					lat: 37.75272,
 					lon: -122.41836,
@@ -148,8 +153,51 @@ module.exports = {
 						'https://s3-media0.fl.yelpcdn.com/bphoto/gcC2Uwtu5raP13D3jWYm0Q/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/-FMhe6ONw5pHntoOM-0VhQ/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/oGoLT_OUwoxmGJW2RVa3Vw/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/CLSKes7rI5JLem2rtMCcIw/o.jpg',
 					createdAt: new Date(),
 					updatedAt: new Date()
+				},
+				/* 14 */ {
+					name: 'JIJIME',
+					categoryId: 6, // Korean
+					address: '5524 Geary Blvd, San Francisco, CA 94121',
+					lat: 37.780560,
+					lon: -122.478800,
+					photoContent:
+						'https://s3-media0.fl.yelpcdn.com/bphoto/ydxZ4gUWhJ0StTyQ-cZy1A/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/4pM3A3hP32KhFCGUMhAk9w/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/SKFg1_OUpKMConFAPVcsNg/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/cHyANtyng_-s1pdyUsck6Q/o.jpg',
+					createdAt: new Date(),
+					updatedAt: new Date()
+				},
+				/* 15 */ {
+					name: 'Baiano Pizzeria',
+					categoryId: 1, // Pizza 
+					address: '1330 9th Ave, San Francisco, CA 94122',
+					lat: 37.763430,
+					lon: -122.465940,
+					photoContent:
+						'https://s3-media0.fl.yelpcdn.com/bphoto/mw2FUmpIbaFXwlr4VO0LWg/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/ACmk84CziA8xdazFs7M0jg/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/TGlX9akeUVi9RDzyOmE6pA/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/c6fUUY6J9PBIlmozB6KKoQ/o.jpg',
+					createdAt: new Date(),
+					updatedAt: new Date()
+				},
+				/* 16 */ {
+					name: 'Izakaya Sozai',
+					categoryId: 4, // Japanese
+					address: '1500 Irving St, San Francisco, CA 94122',
+					lat: 37.763850,
+					lon: -122.474150,
+					photoContent:
+						'https://s3-media0.fl.yelpcdn.com/bphoto/kfMmiJreRS4QMwlUUrw2jA/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/4SItgA6WU47-rC-Y9aQxew/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/uG2r48qpU5uHH6BuAs2T-w/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/SpvCusczBqaF_5LdatXS-Q/o.jpg',
+					createdAt: new Date(),
+					updatedAt: new Date()
+				},
+				/* 17 */ {
+					name: 'Lou\'s Cafe',
+					categoryId: 11, // Sandwiches 
+					address: '5017 Geary Blvd, San Francisco, CA 94118',
+					lat: 37.780602,
+					lon: -122.473221,
+					photoContent:
+						'https://s3-media0.fl.yelpcdn.com/bphoto/tQ1piN3Zj38AAyRdGeyOog/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/gHkV3J69ZgEpfl4poKhp8w/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/1klm9f2Dc_6eWteNEUjl-g/o.jpg,https://s3-media0.fl.yelpcdn.com/bphoto/h098uwJlzxoUynYfdA5ACQ/o.jpg',
+					createdAt: new Date(),
+					updatedAt: new Date()
 				}
-				//* 1 */{ name: '', address: '', createdAt: new Date(), updatedAt: new Date() },
 			],
 			{}
 		);
