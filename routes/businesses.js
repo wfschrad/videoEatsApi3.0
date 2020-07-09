@@ -210,6 +210,10 @@ router.get(
 				{
 					model: User,
 					attributes: ['id', 'userName']
+				},
+				{
+					model: Business,
+					attributes: ['id', 'name']
 				}
 			]
 		});
