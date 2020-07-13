@@ -436,6 +436,16 @@ router.post(
 		if (voteInstance) {
 
 			if (typeId !== voteInstance.typeId) swap = true;
+			else {
+				// handle deletion
+
+				await voteInstance.destroy();
+				if (typeId === 1) upVoteCount--;
+				else downVoteCount--;
+
+				await review.update({ upVoteCount, downVoteCount });
+				res.status(206).json({ upVoteCount: review.upVoteCount, downVoteCount: review.downVoteCount });
+			}
 
 			vote = await voteInstance.update({ typeId });
 
