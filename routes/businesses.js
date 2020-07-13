@@ -444,10 +444,11 @@ router.post(
 				else downVoteCount--;
 
 				await review.update({ upVoteCount, downVoteCount });
-				res.status(206).json({ upVoteCount: review.upVoteCount, downVoteCount: review.downVoteCount });
+				res.status(206).json({ upVoteCount, downVoteCount });
 			}
 
 			vote = await voteInstance.update({ typeId });
+			console.log('swapping: ', swap)
 
 			if (swap && typeId === 1) {
 				upVoteCount++;
@@ -463,12 +464,13 @@ router.post(
 				userId: req.user.id,
 				reviewId: req.params.id
 			});
+			console.log('in wrong else')
 			if (typeId === 1) upVoteCount++;
 			else downVoteCount++;
 		}
 
 		await review.update({ upVoteCount, downVoteCount });
-		res.json({ upVoteCount: review.upVoteCount, downVoteCount: review.downVoteCount });
+		res.json({ upVoteCount, downVoteCount });
 	})
 );
 
