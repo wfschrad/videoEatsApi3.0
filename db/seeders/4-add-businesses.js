@@ -13,7 +13,7 @@ module.exports = {
 
 				/* 1 */ {
 					name: 'Marufuku Ramen SF',
-					categoryId: 2, // Ramen
+					categoryId: 7, // Ramen
 					address: '1581 Webster St, Ste 235, San Francisco, CA 94115',
 					lat: 37.78478,
 					lon: -122.43139,
@@ -24,7 +24,7 @@ module.exports = {
 				},
 				/* 2 */ {
 					name: 'Ramen Yamadaya',
-					categoryId: 2, // Ramen
+					categoryId: 7, // Ramen
 					address: '1728 Buchanan St San Francisco, CA 94115',
 					lat: 37.78607,
 					lon: -122.42969,
@@ -35,7 +35,7 @@ module.exports = {
 				},
 				/* 3 */ {
 					name: 'The House',
-					categoryId: 3, // American Grill
+					categoryId: 1, // American Grill
 					address: '1230 Grant Ave, San Francisco, CA 94133',
 					lat: 37.79869,
 					lon: -122.40711,
@@ -46,7 +46,7 @@ module.exports = {
 				},
 				/* 4 */ {
 					name: 'Burma Superstar',
-					categoryId: 12, // Latin
+					categoryId: 5, // Latin
 					address: '309 Clement St, San Francisco, CA 94118',
 					lat: 37.782791,
 					lon: 122.46254,
@@ -57,7 +57,7 @@ module.exports = {
 				},
 				/* 5 */ {
 					name: 'San Tung',
-					categoryId: 5, // Chinese
+					categoryId: 3, // Asian
 					address: '1031 Irving St, San Francisco, CA 94122',
 					lat: 37.76371,
 					lon: -122.468994,
@@ -68,7 +68,7 @@ module.exports = {
 				},
 				/* 6 */ {
 					name: 'Hog Island Oyster Co',
-					categoryId: 16, // Seafood
+					categoryId: 8, // Seafood
 					address: '1 Ferry Bldg, Shop 11, San Francisco, CA 94111',
 					lat: 37.796177,
 					lon: -122.393611,
@@ -79,7 +79,7 @@ module.exports = {
 				},
 				/* 7 */ {
 					name: 'Gary Danko',
-					categoryId: 14, // Cajun
+					categoryId: 2, // Cajun
 					address: '800 N Point St, San Francisco, CA 94109',
 					lat: 37.805978,
 					lon: -122.420592,
@@ -90,7 +90,7 @@ module.exports = {
 				},
 				/* 8 */ {
 					name: 'Sushirrito',
-					categoryId: 8, // Sushi
+					categoryId: 9, // Sushi
 					address: '226 Kearny St, San Francisco, CA 94108',
 					lat: 37.79026,
 					lon: -122.40388,
@@ -101,7 +101,7 @@ module.exports = {
 				},
 				/* 9 */ {
 					name: 'The Bird',
-					categoryId: 7, // Chicken Wings
+					categoryId: 1, // Chicken Wings
 					address: '115 New Montgomery St, San Francisco, CA 94105',
 					lat: 37.7872,
 					lon: -122.4001,
@@ -112,7 +112,7 @@ module.exports = {
 				},
 				/* 10 */ {
 					name: 'Woodhouse Fish Company',
-					categoryId: 10, // Wine Bar
+					categoryId: 8, // Wine Bar
 					address: '1914 Fillmore St, San Francisco, CA 94115',
 					lat: 37.78752,
 					lon: -122.43349,
@@ -123,7 +123,7 @@ module.exports = {
 				},
 				/* 11 */ {
 					name: 'La Mar Cebichería Peruana',
-					categoryId: 12, // Latin
+					categoryId: 5, // Latin
 					address: 'Pier 1 1/2 The Embarcadero, Ste 100, San Francisco, CA 94111',
 					lat: 37.79536,
 					lon: -122.39371,
@@ -134,7 +134,7 @@ module.exports = {
 				},
 				/* 12 */ {
 					name: "Brenda's French Soul Food",
-					categoryId: 9, // French
+					categoryId: 4, // French
 					address: '652 Polk St, San Francisco, CA 94102',
 					lat: 37.782909,
 					lon: -122.418869,
@@ -145,7 +145,7 @@ module.exports = {
 				},
 				/* 13 */ {
 					name: 'El Farolito',
-					categoryId: 13, // Mexican
+					categoryId: 5, // Mexican
 					address: '2779 Mission St, San Francisco, CA 94110',
 					lat: 37.75272,
 					lon: -122.41836,
@@ -156,7 +156,7 @@ module.exports = {
 				},
 				/* 14 */ {
 					name: 'JIJIME',
-					categoryId: 6, // Korean
+					categoryId: 3, // Korean
 					address: '5524 Geary Blvd, San Francisco, CA 94121',
 					lat: 37.780560,
 					lon: -122.478800,
@@ -167,7 +167,7 @@ module.exports = {
 				},
 				/* 15 */ {
 					name: 'Baiano Pizzeria',
-					categoryId: 1, // Pizza 
+					categoryId: 6, // Pizza
 					address: '1330 9th Ave, San Francisco, CA 94122',
 					lat: 37.763430,
 					lon: -122.465940,
@@ -178,7 +178,7 @@ module.exports = {
 				},
 				/* 16 */ {
 					name: 'Izakaya Sozai',
-					categoryId: 4, // Japanese
+					categoryId: 3, // Japanese
 					address: '1500 Irving St, San Francisco, CA 94122',
 					lat: 37.763850,
 					lon: -122.474150,
@@ -189,7 +189,7 @@ module.exports = {
 				},
 				/* 17 */ {
 					name: 'Lou\'s Cafe',
-					categoryId: 11, // Sandwiches 
+					categoryId: 2, // Sandwiches
 					address: '5017 Geary Blvd, San Francisco, CA 94118',
 					lat: 37.780602,
 					lon: -122.473221,
